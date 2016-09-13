@@ -1,9 +1,9 @@
-﻿-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.1.14
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 06 Septembre 2016 à 20:17
+-- Généré le :  Mar 13 Septembre 2016 à 18:47
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `bd_application`
 --
-CREATE DATABASE IF NOT EXISTS `bd_application` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `bd_application`;
 
 -- --------------------------------------------------------
 
@@ -190,6 +188,7 @@ CREATE TABLE IF NOT EXISTS `recettes` (
   `Allergies` varchar(250) DEFAULT NULL,
   `Duree_Conservation` int(4) DEFAULT NULL,
   `Categorie` varchar(50) NOT NULL,
+  `congelable` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ID_Recette`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
