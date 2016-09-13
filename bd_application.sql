@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 13 Septembre 2016 à 18:47
+-- Généré le :  Mar 13 Septembre 2016 à 18:55
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -148,6 +148,8 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `Taxable_Federal` tinyint(1) NOT NULL,
   `Taxable_Provincial` tinyint(1) NOT NULL,
   `Code_UCP` int(11) DEFAULT NULL,
+  `Perissable` tinyint(1) DEFAULT NULL,
+  `Description` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`ID_Produit`),
   KEY `Categorie` (`Categorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -185,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `recettes` (
   `Etapes` text,
   `Image` varchar(255) DEFAULT NULL,
   `Remarque` text,
-  `Allergies` varchar(250) DEFAULT NULL,
+  `Allergene` varchar(250) DEFAULT NULL,
   `Duree_Conservation` int(4) DEFAULT NULL,
   `Categorie` varchar(50) NOT NULL,
   `congelable` tinyint(1) DEFAULT NULL,
