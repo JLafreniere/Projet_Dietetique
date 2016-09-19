@@ -1,0 +1,22 @@
+        Dim refresh As New PictureBox()
+        refresh.SetBounds(90, 90, 40, 40)
+        refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
+        refresh.SizeMode = PictureBoxSizeMode.StretchImage
+        AddHandler refresh.Click, Sub(sender2, eventargs2)
+                                      'CODE ICI
+
+                                  End Sub
+
+        AddHandler refresh.MouseEnter, Sub(sender2, eventargs2)
+                                           refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refreshHover.png")
+                                       End Sub
+        AddHandler refresh.MouseLeave, Sub(sender2, eventargs2)
+                                           refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refresh.png")
+                                       End Sub
+        AddHandler refresh.MouseDown, Sub(sender2, eventargs2)
+                                          refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refreshDown.png")
+                                      End Sub
+        AddHandler refresh.MouseUp, Sub(sender2, eventargs2)
+                                        refresh.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imagesBoutons\refreshHover.png")
+                                    End Sub
+        Controls.Add(refresh)
