@@ -76,6 +76,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoutonOption.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Calendrier.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -83,6 +86,12 @@
       <DependentUpon>frmAccueil.vb</DependentUpon>
     </Compile>
     <Compile Include="frmAccueil.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgenda.Designer.vb">
+      <DependentUpon>frmAgenda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgenda.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInventaire.Designer.vb">
@@ -128,6 +137,9 @@
     <Compile Include="PanelMois.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PanelOptionsAccueil.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PanelSemaine.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -135,6 +147,18 @@
   <ItemGroup>
     <EmbeddedResource Include="frmAccueil.resx">
       <DependentUpon>frmAccueil.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgenda.resx">
+      <DependentUpon>frmAgenda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInventaire.resx">
+      <DependentUpon>frmInventaire.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProduits.resx">
+      <DependentUpon>frmProduits.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVoirRecettes.resx">
+      <DependentUpon>frmVoirRecettes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -155,6 +179,9 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bck.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

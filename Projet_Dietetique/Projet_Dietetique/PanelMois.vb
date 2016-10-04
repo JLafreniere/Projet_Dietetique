@@ -17,6 +17,7 @@ Public Class PanelMois
     Dim lbl As New Label
 
     Public Property _date As Date
+
     Dim nbSemaines As Integer = 0
 
     Public Sub New(x As Integer, y As Integer, width As Integer, height As Integer, dateDebut As Date)
@@ -85,32 +86,57 @@ Public Class PanelMois
 
         While (_date.AddDays(0).Month <> moisSuivant)
 
+
+
+            Dim caseJour As Integer = 0
+
             Select Case _date.ToString("dddd")
                 Case "dimanche", "Sunday"
-                    semaines(semaine).pnlJours(0).ajouterEvenement(_date.Day)
-                    semaines(semaine).pnlJours(0).Tag = _date.Day
+                    caseJour = 0
                 Case "lundi", "Monday"
-                    semaines(semaine).pnlJours(1).ajouterEvenement(_date.Day)
-                    semaines(semaine).pnlJours(1).Tag = _date.Day
+                    caseJour = 1
                 Case "mardi", "Tuesday"
-                    semaines(semaine).pnlJours(2).ajouterEvenement(_date.Day)
-                    semaines(semaine).pnlJours(2).Tag = _date.Day
+                    caseJour = 2
                 Case "mercredi", "Wednesday"
-                    semaines(semaine).pnlJours(3).ajouterEvenement(_date.Day)
-                    semaines(semaine).pnlJours(3).Tag = _date.Day
+                    caseJour = 3
                 Case "jeudi", "Thursday"
-                    semaines(semaine).pnlJours(4).ajouterEvenement(_date.Day)
-                    semaines(semaine).pnlJours(4).Tag = _date.Day
+                    caseJour = 4
                 Case "vendredi", "Friday"
-                    semaines(semaine).pnlJours(5).ajouterEvenement(_date.Day)
-                    semaines(semaine).pnlJours(5).Tag = _date.Day
+                    caseJour = 5
                 Case "samedi", "Saturday"
-                    semaines(semaine).pnlJours(6).ajouterEvenement(_date.Day)
-                    semaines(semaine).pnlJours(6).Tag = _date.Day
-                    semaine = semaine + 1
+                    caseJour = 6
+
+
 
 
             End Select
+
+            semaines(semaine).pnlJours(caseJour).ajouterEvenement(_date.Day)
+            semaines(semaine).pnlJours(caseJour).Tag = _date.Day
+
+            If (GetPreviousSunday(_date) = GetPreviousSunday(frmAccueil._date_selectionne) Or GetNextSaturday(_date) = GetNextSaturday(frmAccueil._date_selectionne)) Then
+
+                remplirSemaine()
+
+                For i As Integer = 0 To 6
+                    If semaines(semaine).pnlJours(i).BackColor = Color.White Then
+                        semaines(semaine).pnlJours(i).BackColor = Color.BlanchedAlmond
+                    End If
+                Next
+            End If
+
+            If (_date = Date.Today) Then
+                semaines(semaine).pnlJours(caseJour).BackColor = Color.LightBlue
+                semaines(semaine).pnlJours(caseJour).BorderColor = Color.FromArgb(0, 176, 240)
+                semaines(semaine).pnlJours(caseJour).BorderWidth = 6 + 3
+            End If
+
+
+            If caseJour = 6 Then
+                semaine = semaine + 1
+            End If
+
+
 
             _date = _date.AddDays(1)
         End While
@@ -126,6 +152,18 @@ Public Class PanelMois
 
     End Sub
 
+    Function GetPreviousSunday(fromDate As Date) As Date
+        Return fromDate.AddDays(0 - fromDate.DayOfWeek)
+    End Function
+
+    Function GetNextSaturday(fromDate As Date) As Date
+        Return fromDate.AddDays(6 - fromDate.DayOfWeek)
+    End Function
+
+
+    Public Sub remplirSemaine()
+
+    End Sub
 
     Public Sub bindLabel(ByRef lblAnneeMois As Label)
         lbl = lblAnneeMois
@@ -145,15 +183,16 @@ Public Class PanelMois
                         pb.SetBounds((semaines(i).pnlJours(ii).Width / 2) - (semaines(i).pnlJours(ii).Width / 2.5), (semaines(i).pnlJours(ii).Height + 40) / 2 - ((semaines(i).pnlJours(ii).Height - 40) / 2.5), semaines(i).pnlJours(ii).Width / 1.25, (semaines(i).pnlJours(ii).Height - 40) / 1.25)
                     End If
 
-                    pb.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imgAlerte.png")
-                    pb.SizeMode = PictureBoxSizeMode.StretchImage
-                    pb.Tag = evenement
-                    AddHandler pb.Click, Sub(sender2, eventargs2)
+                    'pb.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imgAlerte.png")
+                    'pb.SizeMode = PictureBoxSizeMode.StretchImage
+                    'pb.Tag = evenement
+                    'AddHandler pb.Click, Sub(sender2, eventargs2)
 
-                                             MsgBox(pb.Tag)
-                                         End Sub
+                    '                         MsgBox(pb.Tag)
+                    '                     End Sub
 
-                    semaines(i).pnlJours(ii).Controls.Add(pb)
+
+                    semaines(i).pnlJours(ii).ajouterAlerte(evenement, Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "imgAlerte.png"))
 
                 End If
             Next
@@ -162,4 +201,7 @@ Public Class PanelMois
     End Sub
 
 
+
+
 End Class
+

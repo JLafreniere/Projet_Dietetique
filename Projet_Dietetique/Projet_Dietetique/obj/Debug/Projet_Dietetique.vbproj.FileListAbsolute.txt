@@ -20,3 +20,19 @@ C:\Users\1425165\AppData\Local\Temporary Projects\Projet_Dietetique\obj\Debug\Pr
 \\etudiants.cegeptr.qc.ca\etudiants\1425165\Mes documents\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.Resources.resources
 \\etudiants.cegeptr.qc.ca\etudiants\1425165\Mes documents\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbproj.GenerateResource.Cache
 \\etudiants.cegeptr.qc.ca\etudiants\1425165\Mes documents\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\bin\Debug\MySql.Data.dll
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe.config
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.exe
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.xml
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.pdb
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\bin\Debug\Projet_Dietetique.exe
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\bin\Debug\Projet_Dietetique.pdb
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\bin\Debug\Projet_Dietetique.xml
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\bin\Debug\MySql.Data.dll
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbprojResolveAssemblyReference.cache
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAccueil.resources
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.Resources.resources
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.vbproj.GenerateResource.Cache
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmInventaire.resources
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmProduits.resources
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmVoirRecettes.resources
+H:\Visual Studio 2015\Projects\Projet_Dietetique\Projet_Dietetique\obj\Debug\Projet_Dietetique.frmAgenda.resources

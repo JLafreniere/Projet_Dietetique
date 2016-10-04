@@ -5,23 +5,23 @@
     Public pbLogo As PictureBox
     Dim OngletOffset As Integer = 60
     Dim f As New Font("Segoe UI", 14.25, FontStyle.Bold)
-    Dim nomOnglets() As String = {"Accueil", "Inventaire", "Produits", "Recettes"}
-    Dim formulairesOnglets() As Form = {frmAccueil, frmInventaire, frmProduits, frmVoirRecettes}
+    Dim nomOnglets() As String = {"Accueil", "Agenda", "Inventaire", "Produits", "Recettes"}
+    Dim formulairesOnglets() As Form = {frmAccueil, frmAgenda, frmInventaire, frmProduits, frmVoirRecettes}
 
     'Par Jonathan Lafrenière
     'En tête de tous les formulaires, gestion de la transition entre les onglets
 
-    Public Sub New(currentForm As Form)
+    Public Sub New(currentForm As Form, tabs As Boolean)
 
         Me.currentForm = currentForm
-        Height = 60
+        Height = 50
         BackColor = Color.FromArgb(0, 176, 240)
         Dock = DockStyle.Top
 
         pbLogo = New PictureBox()
         pbLogo.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory & "logo.png")
 
-        pbLogo.SetBounds(10, 5, 40, 50)
+        pbLogo.SetBounds(10, 5, 40, 40)
         pbLogo.SizeMode = PictureBoxSizeMode.StretchImage
 
         AddHandler pbLogo.Click, Sub(sender2, eventargs2)
@@ -34,21 +34,36 @@
 
 
         Controls.Add(pbLogo)
-
-
-        Dim str() As String = nomOnglets
-        Dim frm() As Form = formulairesOnglets
+        If tabs Then
 
 
 
-        For i As Integer = 0 To nomOnglets.Length - 1
-            If currentForm.Text = str(i) Then
-                ajouterOnglet(str(i), frm(i), True)
-            Else
-                ajouterOnglet(str(i), frm(i), False)
-            End If
-        Next
+            Dim str() As String = nomOnglets
+            Dim frm() As Form = formulairesOnglets
 
+
+
+            For i As Integer = 0 To nomOnglets.Length - 1
+                If currentForm.Text = str(i) Then
+                    ajouterOnglet(str(i), frm(i), True)
+                Else
+                    ajouterOnglet(str(i), frm(i), False)
+                End If
+            Next
+        Else
+
+            Dim lbl As New Label
+            lbl.Font = New Font("Segoe UI", 20.25, FontStyle.Bold)
+            lbl.ForeColor = Color.White
+
+            lbl.AutoSize = True
+            lbl.SetBounds(60, 5, 0, 0)
+            lbl.Text = currentForm.Text
+            Controls.Add(lbl)
+
+            currentForm.FormBorderStyle = FormBorderStyle.None
+
+        End If
 
     End Sub
 
@@ -61,6 +76,9 @@
         lbl.Text = btnText
         lbl.Font = f
         lbl.ForeColor = Color.White
+
+        Dim clipRect As New Rectangle
+
 
         If currentTab Then
             pnl.BackColor = Color.White
@@ -123,3 +141,4 @@
     End Sub
 
 End Class
+

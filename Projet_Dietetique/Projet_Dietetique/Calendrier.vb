@@ -8,45 +8,77 @@ Public Class Calendrier
     Dim da As New MySqlDataAdapter
     Dim bd As New GestionBD("Server=localhost;Database=bd_application;Uid=root;Pwd=;")
     Dim lblAnneeMois As New Label
-    Public mc
+    Public mc As PanelMois
     Dim btnMoisPrecedent, btnMoisSuivant As Button
+    '    Public Property _date_selectionne As Date = Date.Today
     Public Sub New(x As Integer, y As Integer, width As Integer, height As Integer, dateDebut As Date)
 
         SetBounds(x, y, width, height - 40)
-
-        mc = New PanelMois(0, 40, width, height - 80, Date.Now)
         btnMoisPrecedent = New Button()
         btnMoisSuivant = New Button()
 
+        btnMoisPrecedent.FlatStyle = FlatStyle.Flat
+        btnMoisSuivant.FlatStyle = FlatStyle.Flat
+        btnMoisSuivant.ForeColor = Color.White
+        btnMoisSuivant.Font = New Font("Segoe UI", 14.25, FontStyle.Bold)
+        btnMoisPrecedent.BackColor = Color.FromArgb(0, 176, 240)
+        btnMoisSuivant.BackColor = Color.FromArgb(0, 176, 240)
+
         btnMoisPrecedent.Text = "<<"
-        btnMoisPrecedent.SetBounds(width / 4 - 50, 5, 100, 30)
-        btnMoisPrecedent.BackColor = DefaultBackColor
+        btnMoisPrecedent.Font = New Font("Segoe UI", 14.25, FontStyle.Bold)
+        btnMoisPrecedent.TextAlign = ContentAlignment.TopCenter
+        btnMoisPrecedent.SetBounds(width / 4 - 50, 0, 100, 40)
+        btnMoisPrecedent.ForeColor = Color.White
         btnMoisPrecedent.UseVisualStyleBackColor = True
 
         AddHandler btnMoisPrecedent.Click, Sub(sender2, eventargs2)
 
-                                               mc.setDate(mc._date.addMonths(-2))
+                                               MsgBox(mc._date & " :) :) :) " & mc._date.AddMonths(-2))
+                                               mc.setDate(mc._date.AddMonths(-3))
                                                ajouterNotifications()
+                                               frmAccueil._date_selectionne = mc._date
+                                               actualiserComposants()
+
 
                                            End Sub
 
         btnMoisSuivant.Text = ">>"
-        btnMoisSuivant.SetBounds((3 * width) / 4 - 50, 5, 100, 30)
-        btnMoisSuivant.BackColor = DefaultBackColor
+        btnMoisSuivant.SetBounds((3 * width) / 4 - 50, 0, 100, 40)
+
         btnMoisSuivant.UseVisualStyleBackColor = True
+
         AddHandler btnMoisSuivant.Click, Sub(sender3, eventargs3)
 
-                                             mc.setDate(mc._date.addMonths(0.5))
+                                             mc.setDate(mc._date.AddMonths(-1))
                                              ajouterNotifications()
-
+                                             frmAccueil._date_selectionne = mc._date
+                                             actualiserComposants()
                                          End Sub
+        Controls.Add(btnMoisSuivant)
+        Controls.Add(btnMoisPrecedent)
+
+        actualiserComposants()
+
+    End Sub
+
+    Public Sub addEventJour(ByVal evenement As String, ByVal jourEvenement As Integer)
+        mc.ajouterEvenement(jourEvenement, evenement)
+
+
+
+    End Sub
+
+    Public Sub actualiserComposants()
+        Controls.Remove(mc)
+        mc = New PanelMois(0, 50, Width, Height - 100, frmAccueil._date_selectionne)
+
 
 
         mc.bindLabel(lblAnneeMois)
 
         lblAnneeMois.Font = New Font("Segoe UI", 14.25)
 
-        lblAnneeMois.Text = StrConv(MonthName(mc._date.addMonths(-1).date.month) & " " & mc._date.year, VbStrConv.ProperCase)
+        lblAnneeMois.Text = StrConv(MonthName(mc._date.AddMonths(-1).Date.Month) & " " & mc._date.Year, VbStrConv.ProperCase)
         lblAnneeMois.AutoSize = False
 
 
@@ -54,18 +86,11 @@ Public Class Calendrier
         lblAnneeMois.TextAlign = ContentAlignment.MiddleCenter
 
         Controls.Add(lblAnneeMois)
-        Controls.Add(btnMoisSuivant)
-        Controls.Add(btnMoisPrecedent)
+
 
         ajouterNotifications()
         Controls.Add(mc)
-
     End Sub
-
-    Public Sub addEventJour(ByVal evenement As String, ByVal jourEvenement As Integer)
-        mc.ajouterEvenement(jourEvenement, evenement)
-    End Sub
-
 
     Private Sub ajouterNotifications()
 
@@ -107,11 +132,13 @@ Public Class Calendrier
 
 
         For Each dr As DataRow In ds.Tables(0).Rows
+            Dim str As String = dr(2)
+
             Try
-                addEventJour(dr(1), Split(dr(2), "-")(2))
+                addEventJour(dr(1), Split(str, "-")(2))
             Catch exc As Exception
 
-                addEventJour(dr(1), Split(dr(2), "/")(1))
+                addEventJour(dr(1), Split(str, "-")(2))
             End Try
         Next
 
@@ -119,3 +146,5 @@ Public Class Calendrier
     End Sub
 
 End Class
+
+
